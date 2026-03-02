@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Conference 2026</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f7f6;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #0056b3;
+    }
+
+    .search-container {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    #search {
+      width: 50%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+
+    .schedule-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .schedule-item {
+      display: flex;
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    .schedule-item.break {
+      background-color: #e3f2fd;
+      justify-content: center;
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .schedule-item .time {
+      width: 120px;
+      font-weight: bold;
+      color: #0056b3;
+      flex-shrink: 0;
+    }
+
+    .schedule-item .details {
+      flex-grow: 1;
+    }
+
+    .schedule-item h2 {
+      font-size: 1.4em;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .schedule-item p {
+      margin: 0 0 10px;
+    }
+
+    .schedule-item .speakers {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .schedule-item .categories {
+      display: flex;
+      gap: 10px;
+    }
+
+    .schedule-item .category {
+      background-color: #007bff;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 0.8em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Tech Conference 2026</h1>
+      <p>A one-day event filled with insightful talks from industry experts.</p>
+    </header>
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Search by category...">
+    </div>
+    <div id="schedule" class="schedule-container"></div>
+  </div>
+  <script>
+    const talksData = [
+      {
+        "title": "Arcus Ducimus Ademptio Solitudo Verus Adiuvo",
+        "speakers": [
+          "Dr. Terence Kunze DVM",
+          "Mr. Leonard Cronin V"
+        ],
+        "categories": [
+          "Cybersecurity"
+        ],
+        "duration": "1 hour",
+        "description": "Trucido quaerat complectus ab exercitationem via. Catena crudelis sum defetiscor crux nulla astrum soleo temporibus cetera. Antea tener sulum virgo consequatur amplitudo."
+      },
+      {
+        "title": "Certe Absum Blandior Attonbitus Accendo",
+        "speakers": [
+          "Alden Schumm"
+        ],
+        "categories": [
+          "Machine Learning"
+        ],
+        "duration": "1 hour",
+        "description": "Aliqua desipio auctus subseco bibo conqueror demo adnuo volup libero. Cometes timor eos apto temperantia subseco defleo umquam constans. Ancilla vetus explicabo patria."
+      },
+      {
+        "title": "Timor Vespillo Auctor",
+        "speakers": [
+          "Perry Bernier"
+        ],
+        "categories": [
+          "DevOps",
+          "Cybersecurity",
+          "AI"
+        ],
+        "duration": "1 hour",
+        "description": "Utpote creptio volutabrum recusandae suus campana attonbitus audio crinis et. Adfero decerno consuasor vilitas ab arca ab decipio ventito quas. Agnosco confugo careo claro caste autem apostolus arceo."
+      },
+      {
+        "title": "Astrum Vulgus Numquam Studio",
+        "speakers": [
+          "Mr. Phil Wolf",
+          "Nellie Blanda"
+        ],
+        "categories": [
+          "Cybersecurity",
+          "Cloud Computing"
+        ],
+        "duration": "1 hour",
+        "description": "Repellat tempore caveo argentum capillus vulgaris curo delicate abbas. Cras capillus venio clementia dignissimos bos vulticulus calcar utor timor. Aeternus assentator soleo volutabrum absconditus."
+      },
+      {
+        "title": "Placeat Caritas Conitor Pecto Ciminatio",
+        "speakers": [
+          "Mrs. Fermin Beier",
+          "Beulah Larkin-Mante"
+        ],
+        "categories": [
+          "Cloud Computing",
+          "Web Development"
+        ],
+        "duration": "1 hour",
+        "description": "Thalassinus ademptio curtus delectus. Peior stella necessitatibus urbs. Custodia illo aveho comburo despecto thesaurus teneo caelestis pax."
+      },
+      {
+        "title": "Porro Catena Baiulus Amita Curia Tot",
+        "speakers": [
+          "Lola Daniel"
+        ],
+        "categories": [
+          "Cybersecurity",
+          "Web Development"
+        ],
+        "duration": "1 hour",
+        "description": "Voluptatum incidunt agnitio. Ciminatio ustulo cuius volup textilis. Vigor compello patria vobis arguo alo."
+      }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const scheduleContainer = document.getElementById('schedule');
+      const searchInput = document.getElementById('search');
+      let talks = talksData;
+
+      renderSchedule(talks);
+
+      searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredTalks = talks.filter(talk =>
+          talk.categories.some(category =>
+            category.toLowerCase().includes(searchTerm)
+          )
+        );
+        renderSchedule(filteredTalks);
+      });
+
+      function renderSchedule(talksToRender) {
+        scheduleContainer.innerHTML = '';
+        let currentTime = new Date('2026-01-01T10:00:00');
+
+        const formatTime = (date) => {
+          return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        };
+
+        const addMinutes = (date, minutes) => {
+          return new Date(date.getTime() + minutes * 60000);
+        };
+
+        const talksToShow = talks.filter(talk => talksToRender.includes(talk));
+
+        let talkCounter = 0;
+        for (let i = 0; i < 6 && talkCounter < talksToShow.length; i++) {
+            const talk = talks[i];
+
+            if (talksToRender.find(t => t.title === talk.title)) {
+                const startTime = new Date(currentTime);
+                const endTime = addMinutes(startTime, 60);
+
+                const scheduleItem = document.createElement('div');
+                scheduleItem.classList.add('schedule-item');
+
+                scheduleItem.innerHTML = `
+                    <div class="time">${formatTime(startTime)} - ${formatTime(endTime)}</div>
+                    <div class="details">
+                    <h2>${talk.title}</h2>
+                    <p class="speakers">${talk.speakers.join(', ')}</p>
+                    <p>${talk.description}</p>
+                    <div class="categories">
+                        ${talk.categories.map(category => `<span class="category">${category}</span>`).join('')}
+                    </div>
+                    </div>
+                `;
+                scheduleContainer.appendChild(scheduleItem);
+                currentTime = addMinutes(endTime, 10);
+            }
+
+          if (i === 2) { // Lunch break after the 3rd talk
+            const breakStartTime = new Date(currentTime);
+            const breakEndTime = addMinutes(breakStartTime, 60);
+            const breakItem = document.createElement('div');
+            breakItem.classList.add('schedule-item', 'break');
+            breakItem.innerHTML = `
+              <div class="time">${formatTime(breakStartTime)} - ${formatTime(breakEndTime)}</div>
+              <div class="details">Lunch Break</div>
+            `;
+            scheduleContainer.appendChild(breakItem);
+            currentTime = breakEndTime;
+          }
+          talkCounter++;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
